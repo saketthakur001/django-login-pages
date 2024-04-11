@@ -1,24 +1,113 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}{% endblock %}</title>
+  <title>{% block title %}{% endblock %}</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    /* Header Styles */
+    header {
+      background: linear-gradient(to right, #7b4397, #dc2430);
+      color: #fff;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 42px;
+      font-weight: 700;
+    }
+
+    /* Navigation Styles */
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #333;
+      padding: 15px 0;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      font-size: 16px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: #555;
+    }
+
+    /* Content Styles */
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px;
+      background-color: #fff;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .welcome-message {
+      text-align: center;
+      color: #7b4397;
+      margin-bottom: 30px;
+    }
+
+    .welcome-message span {
+      color: #dc2430;
+      font-weight: 700;
+    }
+
+    /* Footer Styles */
+    footer {
+      background: linear-gradient(to right, #7b4397, #dc2430);
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>This is my site</h1>
-    <a href="/">Home</a>
-    <span>/</span>
+  <header>
+    <h1>Welcome to Our Website</h1>
+  </header>
+  <nav>
+    <a href="/agents/home">Home</a>
     {% if current_user %}
-        <a href="{% url 'logout' %}">Logout</a>
-        <hr>
-        <h2>Welcome <span style="color:dodgerblue";>{{current_user}}</span></h2>
+    <a href="{% url 'logout' %}">Logout</a>
     {% else %}
-            <a href="{% url 'login' %}">lgoin</a>
-            <span>/</span>
-            <a href="{% url 'signup' %}">Sign Up</a>
-            <hr>
-        <h2>Login to access this website!</h2>
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'signup' %}">Sign Up</a>
     {% endif %}
-
+  </nav>
+  <div class="content">
+    {% if current_user %}
+    <div class="welcome-message">
+      Welcome, <span>{{ current_user }}</span>!
+    </div>
+    {% else %}
+    <div class="welcome-message">
+      Explore our exciting features and services.
+    </div>
+    {% endif %}
     {% block body %}{% endblock %}
+  </div>
+  <footer>
+    &copy; 2023 Our Website. All rights reserved.
+  </footer>
 </body>
 </html>
