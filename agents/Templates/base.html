@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>{% block title %}{% endblock %}</title>
+  <title>{% block title %}Our Innovative Website{% endblock %}</title>
   <style>
     /* Global Styles */
     body {
@@ -16,14 +16,19 @@
     header {
       background: linear-gradient(to right, #7b4397, #dc2430);
       color: #fff;
-      padding: 40px 0;
+      padding: 60px 0;
       text-align: center;
     }
 
     header h1 {
-      margin: 0;
-      font-size: 42px;
+      margin: 0 0 20px;
+      font-size: 48px;
       font-weight: 700;
+    }
+
+    header p {
+      font-size: 20px;
+      margin-bottom: 30px;
     }
 
     /* Navigation Styles */
@@ -52,7 +57,7 @@
     .content {
       max-width: 900px;
       margin: 0 auto;
-      padding: 40px;
+      padding: 60px 40px;
       background-color: #fff;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     }
@@ -60,12 +65,46 @@
     .welcome-message {
       text-align: center;
       color: #7b4397;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
 
     .welcome-message span {
       color: #dc2430;
       font-weight: 700;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .feature {
+      background-color: #f9f9f9;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .feature h3 {
+      color: #7b4397;
+      margin-top: 0;
+    }
+
+    .feature p {
+      margin-bottom: 20px;
+    }
+
+    .feature a {
+      color: #dc2430;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .feature a:hover {
+      color: #b51c27;
     }
 
     /* Footer Styles */
@@ -83,11 +122,15 @@
 </head>
 <body>
   <header>
-    <h1>Welcome to Our Website</h1>
+    <h1>Unlock Your Digital Potential</h1>
+    <p>Our innovative solutions empower businesses to thrive in the digital age.</p>
+    <a href="{% url 'signup' %}" class="cta-button">Get Started</a>
   </header>
   <nav>
     <a href="/agents/home">Home</a>
     {% if current_user %}
+    <a href="{% url 'dashboard' %}">Dashboard</a>
+    <a href="{% url 'profile' %}">Profile</a>
     <a href="{% url 'logout' %}">Logout</a>
     {% else %}
     <a href="{% url 'login' %}">Login</a>
@@ -97,17 +140,38 @@
   <div class="content">
     {% if current_user %}
     <div class="welcome-message">
-      Welcome, <span>{{ current_user }}</span>!
+      Welcome, <span>{{ current_user }}</span>! Explore our exciting features.
     </div>
     {% else %}
     <div class="welcome-message">
-      Explore our exciting features and services.
+      Discover how our innovative solutions can transform your business.
     </div>
     {% endif %}
-    {% block body %}{% endblock %}
+    <div class="features">
+      <div class="feature">
+        <h3>Analytics</h3>
+        <p>Gain deep insights into your business performance with our powerful analytics tools.</p>
+        <a href="#">Learn More</a>
+      </div>
+      <div class="feature">
+        <h3>Automation</h3>
+        <p>Streamline your workflows and boost efficiency with our advanced automation features.</p>
+        <a href="#">Learn More</a>
+      </div>
+      <div class="feature">
+        <h3>Collaboration</h3>
+        <p>Empower your team to work together seamlessly with our collaboration tools.</p>
+        <a href="#">Learn More</a>
+      </div>
+    </div>
+    <div class="cta">
+      <h2>Ready to Elevate Your Business?</h2>
+      <p>Sign up today and unlock the power of our innovative solutions.</p>
+      <a href="{% url 'signup' %}" class="cta-button">Get Started</a>
+    </div>
   </div>
   <footer>
-    &copy; 2023 Our Website. All rights reserved.
+    &copy; 2023 Our Innovative Website. All rights reserved.
   </footer>
 </body>
 </html>
