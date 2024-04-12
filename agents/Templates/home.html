@@ -1,50 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Page</title>
-  <link rel="stylesheet" href="style.css"> <!-- Link to external CSS file -->
-</head>
-<body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="home.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+{% extends 'base.html' %}
 
-  <main>
-    <section class="hero">
-      <h1>Welcome to Our Website</h1>
-      <p>Discover our services and explore our content.</p>
-      <a href="#" class="cta-button">Get Started</a>
-    </section>
+{% block title %}Home{% endblock %}
 
-    <section class="features">
-      <h2>Key Features</h2>
-      <ul>
-        <li>Feature 1</li>
-        <li>Feature 2</li>
-        <li>Feature 3</li>
-      </ul>
-    </section>
-
-    <section class="about">
-      <h2>About Us</h2>
-      <p>Learn more about our company and our mission.</p>
-      <a href="about.html">Read More</a>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2024 Your Company Name. All rights reserved.</p>
-  </footer>
-
-  <script src="script.js"></script> <!-- Link to external JavaScript file -->
-</body>
-</html>
+{% block body %}
+  <h2>Welcome, {{ current_user.username }}!</h2>
+  <p>This is the home page.</p>
+{% endblock %}

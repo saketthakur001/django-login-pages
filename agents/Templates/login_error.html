@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Login Error{% endblock %}
+
+{% block body %}
+  <h2>Login Error</h2>
+  <p>{{ error_message }}</p>
+  <a href="{% url 'login' %}">Go back to login</a>
+{% endblock %}
